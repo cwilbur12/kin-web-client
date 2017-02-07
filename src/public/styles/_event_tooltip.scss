@@ -1,0 +1,495 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+@import 'colors';
+@import 'tooltip';
+
+$react-dates-width-input: 110px;
+$react-dates-color-primary: $kin-color; // main start / end date
+$react-dates-color-primary-shade-1: lighten($kin-color, 5%); // border and hover
+$react-dates-color-primary-shade-2: lighten($kin-color, 10%); // "filled" dates
+$react-dates-color-primary-shade-3: lighten($kin-color, 35%); // hover border
+$react-dates-color-primary-shade-4: lighten($kin-color, 35%); // hover background
+$react-dates-spacing-vertical-picker: 40px;
+$react-dates-width-tooltip-arrow: 0;
+
+$react-dates-color-focus: $kin-color;
+$react-dates-color-text-focus: $white;
+
+@import '~react-dates/css/styles.scss';
+
+.DateInput {
+    font-size: 1rem;
+    padding: 0.1rem 0.5rem 0;
+}
+
+.DateRangePicker {
+    td,
+    th {
+        padding: 0;
+    }
+}
+
+.DateRangePickerInput {
+    border-width: 0;
+    background-color: transparent;
+}
+
+.DateRangePicker__picker {
+    border: 1px solid $light-gray;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.CalendarMonth__caption {
+    margin-top: 0;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.DayPicker__week-header {
+    top: 40px;
+}
+
+.DayPickerNavigation--horizontal .DayPickerNavigation__prev,
+.DayPickerNavigation--horizontal .DayPickerNavigation__next {
+    top: 8px;
+}
+
+.kin-tooltip.event-tooltip {
+    $tooltip-width: 350px;
+
+    $location-icon-width: 15px;
+    $location-icon-height: 21px;
+
+    width: $tooltip-width;
+    font-size: 0.85em;
+    padding: 0;
+    margin-bottom: 30px; // extra "margin" for popper positionning in week-view
+
+    .read-only-tooltip {
+        // TODO: should probably have this var a couple of levels up
+        $wider-tooltip-border-size: 2px;
+        $row-margin: 10px;
+        $color-picker-button-size: 14px;
+
+        h6 {
+            color: $darker-gray;
+
+            &.empty-title {
+                color: $medium-gray;
+            }
+        }
+
+        .color-picker,
+        .title-wrapper {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .color-picker {
+            $line-height: 22px;
+
+            height: $line-height;
+
+            .color-picker-button {
+                cursor: pointer;
+                width: $color-picker-button-size;
+                height: $color-picker-button-size;
+                margin: ($line-height - $color-picker-button-size) / 2 0;
+            }
+
+            .color-picker-tooltip {
+                $line-height: 36px;
+                $tooltip-border-size: 1px;
+                $color-picker-button-size: 20px;
+
+                background: $white;
+                width: ($color-picker-button-size + 10px) * 6 + 2 * $tooltip-border-size;
+
+                .color-picker-button {
+                    width: $color-picker-button-size;
+                    height: $color-picker-button-size;
+                    margin: ($line-height - $color-picker-button-size) / 2 5px;
+                }
+            }
+        }
+
+        .title-wrapper {
+            margin-left: $row-margin;
+            width: $tooltip-width - $color-picker-button-size - 2 * $row-margin; // TODO: fix this
+        }
+
+        .row {
+            margin-bottom: $row-margin;
+
+            &:first-of-type {
+                margin-top: $row-margin;
+            }
+        }
+
+        .dates-row {
+            $duration-width: 100px;
+
+            font-size: 1rem;
+            color: $dark-gray;
+
+            .time-cell {
+                color: $medium-gray;
+                font-weight: bold;
+            }
+
+            .datetimes-wrapper,
+            .duration-wrapper {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .datetimes-wrapper {
+                margin: 0 $row-margin;
+                width: $tooltip-width - $duration-width - 2 * $row-margin - $wider-tooltip-border-size;
+            }
+
+            .duration-wrapper {
+                width: $duration-width;
+            }
+        }
+
+        .location-row {
+            $location-icon-margin: 10px;
+
+            a:hover .location-icon {
+                filter: grayscale(100%);
+            }
+
+            .location-map {
+                padding-bottom: $row-margin;
+            }
+
+            .location-icon-wrapper,
+            .location-text-wrapper {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .location-icon-wrapper {
+                width: $location-icon-width;
+                margin: 0 $row-margin;
+            }
+
+            .location-text-wrapper {
+                width: $tooltip-width - $location-icon-width - 2 * $row-margin - $wider-tooltip-border-size;
+            }
+        }
+
+        .description-row {
+            margin: 0 $row-margin $row-margin;
+        }
+
+        .attendees-row {
+            .columns {
+                padding: 0.3rem 0.4rem;
+            }
+        }
+    }
+
+    .details-sub-tooltip {
+        h5 {
+            outline: none;
+
+            &:focus {
+                color: $kin-color;
+            }
+        }
+    }
+
+    header,
+    footer {
+        padding: 0.3rem;
+        margin-bottom: 0;
+        background: $super-light-gray;
+
+        * {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .location-icon {
+        width: $location-icon-width;
+        height: $location-icon-height;
+    }
+
+    p,
+    ul {
+        margin: 0;
+        max-height: 125px;
+        overflow: auto;
+    }
+
+    .empty-list-label {
+        display: block;
+        text-align: center;
+    }
+
+    .constrained {
+        // width: 100%; // TODO width: 295px;
+        max-height: 6.6rem;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-overflow: ellipsis;
+    }
+
+    .edit-tooltip {
+        $tooltip-height: 430px;
+
+        position: relative;
+        width: $tooltip-width;
+        height: $tooltip-height;
+        overflow: hidden;
+
+        input,
+        select {
+            border: 0;
+            box-shadow: none;
+            font-size: 0.95rem;
+            padding: 0;
+            margin: 0;
+            height: auto;
+            color: $darker-gray;
+            outline: none;
+        }
+
+        select {
+            background: transparent;
+            -webkit-appearance: none;
+            cursor: pointer;
+            line-height: 1.2rem;
+        }
+
+        label,
+        h6 {
+            color: $medium-gray;
+            font-size: 0.75rem;
+            margin-bottom: 0;
+        }
+
+        section {
+            padding: 0.5rem;
+
+            &:not(:first-child) {
+                border-top: 1px solid $light-gray;
+            }
+        }
+
+        .subtooltip {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+
+            $anim-duration: 150ms;
+            $anim-easing: ease-in-out;
+
+            &[data-direction='left'] {
+                &.subtooltip-enter {
+                    left: -$tooltip-width;
+                    transition: left $anim-duration $anim-easing;
+
+                    &.subtooltip-enter-active {
+                        left: 0;
+                    }
+                }
+
+                &.subtooltip-leave {
+                    left: 0;
+                    transition: left $anim-duration $anim-easing;
+
+                    &.subtooltip-leave-active {
+                        left: -$tooltip-width;
+                    }
+                }
+            }
+
+            &[data-direction='right'] {
+                &.subtooltip-enter {
+                    right: -$tooltip-width;
+                    transition: right $anim-duration $anim-easing;
+
+                    &.subtooltip-enter-active {
+                        right: 0;
+                    }
+                }
+
+                &.subtooltip-leave {
+                    right: 0;
+                    transition: right $anim-duration $anim-easing;
+
+                    &.subtooltip-leave-active {
+                        right: -$tooltip-width;
+                    }
+                }
+            }
+
+            footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+            }
+
+            form {
+                width: $tooltip-width;
+                position: absolute;
+                z-index: 20; // Need to be higher than .avatar's z-index
+                box-shadow: 0 7px 14px white;
+                background: $super-light-gray;
+                padding: 0.3rem;
+                line-height: 40px;
+
+                button {
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                }
+            }
+
+            .description-subtooltip {
+                textarea {
+                    height: $tooltip-height - 37px;
+                    resize: none;
+                    border: 0;
+                }
+            }
+
+            .attendee-subtooltip {
+                $invite-button-width: 65px;
+
+                input {
+                    // Use to align it with the "invite" button
+                    width: $tooltip-width - $invite-button-width;
+                    padding: 0.55rem;
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+            }
+
+            .attendee-subtooltip-content,
+            .reminder-subtooltip-content {
+                height: $tooltip-height - 38px;
+                overflow: auto;
+
+                table,
+                h6 {
+                    margin-top: 55px;
+                }
+
+                td,
+                th {
+                    padding: 0.3rem 0.5rem;
+                }
+            }
+
+            .attendee-subtooltip-content {
+                th:first-child {
+                    width: 48px;
+                }
+
+                th:last-child {
+                    width: 45px;
+                }
+
+                td .constrained {
+                    width: 230px;
+                }
+            }
+
+            .reminder-subtooltip-content {
+                th:last-child {
+                    width: 55px;
+                }
+            }
+
+            th {
+                text-align: center;
+            }
+
+            .button {
+                margin: 0;
+            }
+        }
+
+        .sub-tooltip-opener-row {
+            outline: none;
+
+            &:focus h6 {
+                color: $kin-color;
+            }
+        }
+
+        #event-title-input {
+            // Using an ID because it has a label associated with it
+            font-size: 1.2rem;
+        }
+
+        .focused {
+            color: $kin-color;
+        }
+
+        .TimeInput {
+            float: left;
+            width: 110px;
+            font-size: 1rem;
+            padding: 0 0.5rem 0.1rem;
+
+            input {
+                padding: 0.2rem 0.5rem;
+
+                &:focus {
+                    background-color: $kin-color;
+                    color: $white;
+                }
+            }
+
+            &:last-child {
+                margin-left: 24px;
+            }
+        }
+
+        .dates-row {
+            $all-day-checkbox-width: 50px;
+
+            padding: 0;
+
+            .dates-row__date-time-inputs,
+            .dates-row__all-day-checkbox {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .dates-row__date-time-inputs {
+                width: $tooltip-width - $all-day-checkbox-width;
+            }
+
+            .dates-row__all-day-checkbox {
+                width: 35px;
+                text-align: center;
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+            }
+        }
+
+        .layer-row {
+            padding: 0 0 0.5rem 0.5rem;
+
+            select {
+                display: block;
+                transition: border-color 250ms ease-in-out;
+            }
+        }
+    }
+}
+
+.kin-tooltip-overlay.event-tooltip-overlay {
+    z-index: $kin-tooltip-overlay-zindex - 2; // Make sure we are under .fc-view-container
+}

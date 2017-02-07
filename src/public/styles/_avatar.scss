@@ -1,0 +1,35 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+.avatar {
+    position: relative;
+    width: 32px;
+    height: 32px;
+
+    .avatar-bg {
+        $radius: 15px;
+
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 2 * $radius;
+        height: 2 * $radius;
+        line-height: 2.1 * $radius;
+        border-radius: $radius;
+        color: WHITE;
+        text-align: center;
+    }
+
+    .avatar-rsvp {
+        position: absolute;
+        z-index: 11;
+        bottom: 0;
+        right: 0;
+        width: 12px;
+        height: 12px;
+    }
+}

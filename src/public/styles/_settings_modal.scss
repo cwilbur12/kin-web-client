@@ -1,0 +1,105 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+#settings-modal {
+    font-size: 0.9rem;
+
+    .button {
+        margin: 0;
+    }
+
+    .tabs-title {
+        padding: 0;
+    }
+
+    .tabs-panel {
+        padding: 0.5rem 0;
+    }
+
+    .tabs-content {
+        height: 75vh;
+        overflow: auto;
+        padding: 80px 0 40px;
+    }
+
+    footer {
+        position: absolute;
+        z-index: 100;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        box-shadow: 0 -7px 14px white;
+    }
+
+    .tabs {
+        position: absolute;
+        z-index: 100;
+        left: 0;
+        right: 0;
+        top: 0;
+        box-shadow: 0 7px 14px white;
+    }
+
+    .provider-logo {
+        width: 100%;
+    }
+
+    #settings-accounts {
+        table {
+            table-layout: fixed;
+
+            td:first-child {
+                width: 2.5rem;
+                padding-right: 0;
+            }
+
+            td:last-child {
+                width: 8rem;
+
+                .button {
+                    width: 100%;
+                }
+            }
+        }
+
+        .disconnect-overlay {
+            /* float: right; */
+            margin: -1rem 0 -1rem 1.1rem;
+            font-size: 1.2rem;
+            color: $kin-color;
+            position: relative;
+            z-index: 100;
+
+            & + .provider-logo {
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+.tabs-title {
+    text-align: center;
+
+    div {
+        &.icon {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+    }
+
+    &:not(.is-active) {
+        a {
+            color: #666666;
+        }
+    }
+
+    &.is-active {
+        a {
+            color: $kin-color;
+        }
+    }
+}

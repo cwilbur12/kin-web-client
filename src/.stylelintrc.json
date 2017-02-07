@@ -1,0 +1,12 @@
+{
+    "extends": "stylelint-config-standard",
+    "plugins": [
+        "stylelint-scss"
+    ],
+    "rules": {
+        "color-hex-case": "upper",
+        "color-hex-length": "long",
+        "indentation": 4,
+        "declaration-block-no-redundant-longhand-properties": null
+    }
+}

@@ -1,0 +1,8 @@
+/node_modules/*
+/public/
+/raw*
+/tests*
+/pm*
+/certs
+/coverage
+.DS_Store

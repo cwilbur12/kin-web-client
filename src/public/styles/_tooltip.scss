@@ -1,0 +1,85 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+$kin-tooltip-offset: 10px;
+$kin-tooltip-zindex: 20;
+$kin-tooltip-overlay-zindex: $kin-tooltip-zindex - 1;
+$kin-tooltip-arrow-size: 8px;
+$kin-tooltip-arrow-color: $white;
+
+.kin-tooltip-overlay {
+    background: rgba(255, 255, 255, 0.5);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: $kin-tooltip-zindex - 1;
+
+    &.show {
+        display: block;
+    }
+}
+
+.kin-tooltip {
+    z-index: $kin-tooltip-zindex;
+    display: none;
+    border: 1px solid $light-gray;
+    border-radius: 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    margin: 0;
+
+    &.show {
+        display: block;
+    }
+
+    .tooltip-arrow {
+        width: 0;
+        height: 0;
+        position: absolute;
+        box-sizing: border-box;
+        border: $kin-tooltip-arrow-size solid $kin-tooltip-arrow-color;
+        border-color: $kin-tooltip-arrow-color $kin-tooltip-arrow-color transparent transparent;
+        box-shadow: 2px -2px 2px rgba(0, 0, 0, 0.075);
+    }
+
+    &[x-placement^='top'] {
+        margin-bottom: $kin-tooltip-offset;
+
+        > .tooltip-arrow {
+            transform: rotate(-225deg);
+            bottom: -$kin-tooltip-arrow-size;
+        }
+    }
+
+    &[x-placement^='bottom'] {
+        margin-top: $kin-tooltip-offset;
+
+        > .tooltip-arrow {
+            transform: rotate(-45deg);
+            top: -$kin-tooltip-arrow-size;
+        }
+    }
+
+    &[x-placement^='right'] {
+        margin-left: $kin-tooltip-offset;
+
+        > .tooltip-arrow {
+            transform: rotate(-135deg);
+            left: -$kin-tooltip-arrow-size;
+        }
+    }
+
+    &[x-placement^='left'] {
+        margin-right: $kin-tooltip-offset;
+
+        > .tooltip-arrow {
+            transform: rotate(-315deg);
+            right: -$kin-tooltip-arrow-size;
+        }
+    }
+}

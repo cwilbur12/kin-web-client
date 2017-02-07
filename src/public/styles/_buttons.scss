@@ -1,0 +1,76 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+@import "colors";
+
+$button-transition: background-color 0.15s ease-out, color 0.15s ease-out;
+
+.button {
+    @include button;
+
+    border: 1px solid $border-gray !important; // TODO: need to check if this is necessary ;)
+
+    &.primary {
+        @include button(false, map-get($foundation-palette, primary), auto, $white, solid);
+    }
+
+    &.secondary {
+        @include button(false, $white, scale-color($white, $lightness: -10%), auto, solid);
+    }
+
+    &.alert {
+        @include button(false, $white, map-get($foundation-palette, alert), auto, solid);
+
+        &:hover,
+        &:focus {
+            color: $white;
+        }
+    }
+
+    @each $size, $value in map-remove($button-sizes, default) {
+        &.#{$size} {
+            font-size: $value;
+        }
+    }
+
+    &.expanded {
+        @include button-expand;
+    }
+
+    &.disabled,
+    &[disabled] {
+        @include button-disabled;
+    }
+}
+
+.provider-button {
+    @extend .button;
+
+    margin: 0;
+
+    $provider-color-schemes: (
+        eventbrite: #FF8400,
+        facebook: #4862A3,
+        github: #000000,
+        google: #DD4B39,
+        meetup: #ED1C40,
+        outlook: #EB3D01,
+        todoist: #E44332,
+        trello: #026AA7,
+        wunderlist: #EB3D01,
+    );
+
+    @each $provider, $bg-color in $provider-color-schemes {
+        &.#{$provider}-style {
+            background: $bg-color;
+            color: $white;
+
+            &:hover {
+                background: darken($bg-color, 15%);
+            }
+        }
+    }
+}

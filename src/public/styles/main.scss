@@ -1,0 +1,215 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+@import 'settings';
+@import '~foundation-sites/scss/foundation';
+
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-dropdown;
+@include foundation-float-classes;
+@include foundation-forms;
+@include foundation-global-styles;
+@include foundation-grid;
+@include foundation-label;
+@include foundation-menu;
+@include foundation-reveal;
+@include foundation-table;
+@include foundation-tabs;
+@include foundation-top-bar;
+@include foundation-typography;
+@include foundation-visibility-classes;
+
+@import 'tooltip';
+@import 'authentication_modal';
+@import 'autocompletor';
+@import 'avatar';
+@import 'buttons';
+@import 'calendar_toolbar';
+@import 'colors';
+@import 'event_tooltip';
+@import 'settings_modal';
+@import 'sources_list';
+@import 'timezone_selector';
+@import 'custom_fc';
+
+body {
+    overflow: hidden;
+}
+
+em {
+    color: #999999;
+    font-size: 0.8rem;
+    font-style: normal;
+}
+
+hr {
+    // Foundation imports a weird rule limiting hr to 75rem, this is to clear it
+    max-width: none;
+}
+
+.cursored {
+    &,
+    * {
+        cursor: pointer;
+        user-select: none;
+    }
+}
+
+.view-switch {
+    &.fa-bars {
+        display: block;
+        transform: rotate(-90deg);
+    }
+}
+
+.reveal {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+
+    footer,
+    header {
+        display: block;
+        clear: both;
+        background: $lighter-gray;
+        margin: 0;
+        padding: 0.5rem;
+
+        h4 {
+            margin: 0;
+            font-size: 1rem;
+        }
+    }
+
+    .callout {
+        border: 0;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+footer .button {
+    margin: 0;
+}
+
+#leave-edit-mode-modal,
+#attendee-notification-modal,
+#event-deletion-modal {
+    width: 300px;
+
+    .button:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.template {
+    display: none;
+}
+
+.attendees-list {
+    li {
+        float: left;
+        margin: 0.5rem 0.3rem;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $medium-gray;
+}
+$sidebar-width: 250px;
+
+aside {
+    float: left;
+    width: $sidebar-width;
+    height: 100vh;
+    background: $light-gray;
+    overflow: auto;
+}
+
+.content {
+    margin-left: 0;
+
+    &.margin {
+        margin-left: $sidebar-width;
+    }
+}
+
+.logo {
+    position: fixed;
+    top: 0;
+    left: 20px;
+    z-index: 10;
+    background: url('../imgs/logo/logo@3x.png') no-repeat;
+    background-size: contain;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    transform: translate(0, -4px);
+    transition: transform 100ms ease-out;
+
+    &:hover {
+        transform: translate(0, 0);
+    }
+}
+
+.settings-button {
+    color: $dark-gray;
+    font-size: 1.4rem;
+    margin: 0.3rem 0.65rem;
+
+    &:hover {
+        color: $darker-gray;
+    }
+}
+
+.message-popup-stack {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100vw;
+
+    .message-popup {
+        $message-width: 400px;
+
+        margin: 0.2rem auto;
+        width: $message-width;
+        background: blue;
+        background: $light-gray;
+        color: $dark-gray;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+
+        &.error {
+            background: $kin-color;
+            color: #FFFFFF;
+        }
+
+        &.template {
+            display: none;
+        }
+
+        .message-text {
+            padding: 0.3rem 1rem;
+        }
+
+        .message-close {
+            float: right;
+            cursor: pointer;
+            font-weight: normal;
+            padding: 0.3rem 1rem;
+
+            &:hover {
+                color: $kin-color;
+            }
+        }
+    }
+}

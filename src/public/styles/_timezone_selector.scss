@@ -1,0 +1,50 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+.timezone-selector {
+    .timezone-autocompletor {
+        width: 95%;
+        margin: 0.5rem auto;
+
+        input {
+            margin-bottom: 0;
+        }
+    }
+
+    table {
+        margin-bottom: 0;
+
+        td,
+        th {
+            padding: 0.1rem 0.5rem;
+        }
+
+        th:nth-child(1) {
+            width: 4.5rem;
+        }
+
+        td:nth-child(2) {
+            width: 5rem;
+        }
+
+        tr[data-value] {
+            cursor: pointer;
+
+            &.active {
+                color: $kin-color;
+            }
+
+            &:hover {
+                color: map-get($foundation-palette, primary);
+            }
+        }
+    }
+}
+
+.timezone-selector-tooltip {
+    padding: 0.2rem;
+    background: $white;
+}

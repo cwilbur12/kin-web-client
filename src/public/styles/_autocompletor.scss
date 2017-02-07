@@ -1,0 +1,38 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+@import 'colors';
+
+.autocompletor-results {
+    position: absolute;
+    max-height: 150px;
+    width: 95%;
+    overflow-y: auto;
+
+    * {
+        background: $lighter-gray;
+    }
+
+    tr[data-value] {
+        td {
+            max-width: 0;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        color: $darker-gray;
+        cursor: pointer;
+
+        &.active {
+            color: $kin-color;
+        }
+
+        &:hover {
+            color: map-get($foundation-palette, primary);
+        }
+    }
+}

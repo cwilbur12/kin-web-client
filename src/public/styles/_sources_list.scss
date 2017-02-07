@@ -1,0 +1,74 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+#sources-list {
+    color: #4A4A4A;
+
+    .loading {
+        width: 14px;
+        height: 14px;
+        border-width: 0.15rem;
+    }
+
+    .menu li {
+        margin: 0.25rem 0;
+        padding: 0;
+
+        * {
+            cursor: pointer;
+        }
+
+        label {
+            padding: 0.1rem 0.6rem;
+            margin: 0;
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 0.9rem;
+            width: $offcanvas-size - 60px;
+        }
+
+        input,
+        .loading {
+            margin: 0.25rem 0.3rem 0 0;
+        }
+    }
+
+    .add-account {
+        margin-top: 50px;
+    }
+
+    .source-layers-list {
+        margin: 0.5rem 0;
+        padding: 0.5rem 0;
+
+        h3 {
+            padding: 0 0 0.1rem 0.4rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+
+            &:hover .source-accessory {
+                color: $kin-color;
+            }
+        }
+
+        .source-title {
+            width: 210px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .source-accessory {
+            margin: 0 0.85rem 0 0;
+            color: #9B9B9B;
+        }
+
+        .source-layer-checkbox {
+            margin-right: 0.5rem;
+        }
+    }
+}

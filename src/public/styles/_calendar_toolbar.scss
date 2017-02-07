@@ -1,0 +1,41 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+.calendar-toolbar {
+    .button {
+        color: $dark-gray;
+        background: none;
+        border-width: 0 !important;
+        border-radius: 0;
+        box-shadow: none;
+        height: 2.5rem;
+        padding: 0.5rem 1rem;
+        margin: 0;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background: $light-gray;
+        }
+    }
+
+    .calendar-toolbar__title {
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+
+    .chevron-icon {
+        width: 10px;
+    }
+
+    &.margin {
+        // Used to make some place when the sidebar is
+        // collapsed and the logo "overlaps" the topbar
+        padding-left: 80px;
+    }
+}

@@ -1,0 +1,42 @@
+/*!
+ * kin
+ * Copyright(c) 2016-2017 Benoit Person
+ * Apache 2.0 Licensed
+ */
+
+.authentication-modal {
+    background-color: white;
+    bottom: 0;
+    display: none;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: $kin-tooltip-overlay-zindex;
+
+    &.show {
+        display: block;
+    }
+
+    .callout {
+        border: 0;
+        padding-top: 13vh;
+        background: transparent;
+    }
+
+    .button {
+        display: block;
+        width: 250px;
+        margin: 0.2rem auto;
+        font-weight: 500;
+        border-radius: 5px;
+        padding: 0.2rem;
+        line-height: 2.5em;
+    }
+
+    .social-icon {
+        margin-top: 0.4rem;
+        font-size: 1.5rem;
+    }
+}
